@@ -262,10 +262,10 @@ require('lazy').setup({
           },
         },
       }
-      require('flutter-tools').setup {} -- use defaults
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      require('telescope').load_extension 'flutter'
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -283,6 +283,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+      vim.keymap.set('n', '<leader>fr', ':Telescope flutter commands<CR>', { desc = 'Telescope flutter commands' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
